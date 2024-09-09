@@ -1,0 +1,5 @@
+parameters/object_detection/tiny/final.weights filter=lfs diff=lfs merge=lfs -text
+parameters/pose_2d/medium/checkpoints/model-527000.meta filter=lfs diff=lfs merge=lfs -text
+parameters/pose_2d/tiny/checkpoints/model-936700.meta filter=lfs diff=lfs merge=lfs -text
+parameters/object_detection/v2/final.weights filter=lfs diff=lfs merge=lfs -text
+weights/fastpose.pth filter=lfs diff=lfs merge=lfs -text
