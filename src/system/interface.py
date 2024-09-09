@@ -25,8 +25,8 @@ class AnnotatorInterface:
         self.frame_data = []
         self.video_label = video_label
         self.frame_count = 0
-        self.keypoints_file = open('../../keypoints/x.txt', 'a')
-        self.labels_file = open('../../keypoints/y.txt', 'a')
+        self.keypoints_file = open('/home/goyal/Desktop/fastpose/keypoints/x.txt', 'a')
+        self.labels_file = open('/home/goyal/Desktop/fastpose/keypoints/y.txt', 'a')
         self.current_video_label = None
 
 
