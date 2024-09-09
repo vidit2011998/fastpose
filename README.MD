@@ -20,6 +20,7 @@ FastPose is an open-source library for real-time 2D/3D pose estimation on CPU. T
      │   └── ...
      └── ...
      ```
+  - Here 1,2 .... are labels
 
 2. **Running the Script**:
    - Use the following command to process videos:
