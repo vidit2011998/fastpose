@@ -2,7 +2,8 @@
 
 ## Overview
 
-FastPose is an open-source library for real-time 2D/3D pose estimation on CPU. This repository is a remake of the main project, providing a method to create custom datasets using FastPose and generate keypoints with their respective labels in separate files.
+FastPose is an open-source library for real-time 2D/3D pose estimation on CPU. This repository is a remake of the main project (https://github.com/Drnoodle/fastpose), providing a method to create datasets using FastPose to generate keypoints with their respective labels in separate files.
+Thanks to the original authors.
 
 ## Steps to Use FastPose
 

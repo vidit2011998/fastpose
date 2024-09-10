@@ -1,11 +1,15 @@
 from datetime import time
 import cv2
+import sys
+import os
 from src.system.interface import AnnotatorInterface
 from src.utils.drawer import Drawer
 import time
 from sys import argv
 from pathlib import Path
 
+print("Current working directory:", os.getcwd())
+print("sys.path:", sys.path)
 
 
 
@@ -79,7 +83,7 @@ def process_directory(directory_path, max_persons):
 if __name__ == "__main__":
     print("start frontend")
 
-    max_persons = 2
+    max_persons = 1
 
     if len(argv) < 2:
         print("Usage: python demo_2d.py <directory_path> [max_persons]")

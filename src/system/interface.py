@@ -17,7 +17,7 @@ class AnnotatorInterface:
 
 
 
-    def __init__(self, bbox_model, pose_2d_model, pose_3d_model, max_persons, video_label):
+    def __init__(self, bbox_model, pose_2d_model, pose_3d_model, max_persons, video_label, save_keypoints = True):
 
         self.bbox_model = bbox_model
         self.pose_2d_model = pose_2d_model
@@ -25,8 +25,10 @@ class AnnotatorInterface:
         self.frame_data = []
         self.video_label = video_label
         self.frame_count = 0
-        self.keypoints_file = open('/home/goyal/Desktop/fastpose/keypoints/x.txt', 'a')
-        self.labels_file = open('/home/goyal/Desktop/fastpose/keypoints/y.txt', 'a')
+        self.save_keypoints = save_keypoints
+        if self.save_keypoints:
+            self.keypoints_file = open('/home/goyal/Desktop/fastpose/keypoints/x.txt', 'a')
+            self.labels_file = open('/home/goyal/Desktop/fastpose/keypoints/y.txt', 'a')
         self.current_video_label = None
 
 
@@ -56,12 +58,11 @@ class AnnotatorInterface:
     Build the annotator interface using the model defined in the model factory
     """
     @staticmethod
-    def build(max_persons=1, video_label=''):
+    def build(max_persons=1, save_keypoints=True):
         bbox_model = ModelFactory.build_object_detection_interface()
         pose_2d_model = ModelFactory.build_pose_2d_interface()
         pose_3d_model = ModelFactory.build_pose_3d_interface()
-        return AnnotatorInterface(bbox_model, pose_2d_model, pose_3d_model, max_persons, video_label)
-
+        return AnnotatorInterface(bbox_model, pose_2d_model, pose_3d_model, max_persons, save_keypoints)
     """
     Create a new person annotation
     """
@@ -194,8 +195,9 @@ class AnnotatorInterface:
     """ Terminates the object detection routine executed in background"""
     def terminate(self):
         self.object_detector_kill_trigger = True
-        self.keypoints_file.close()
-        self.labels_file.close()
+        if self.save_keypoints:
+            self.keypoints_file.close()
+            self.labels_file.close()
 
 
     """
@@ -283,7 +285,8 @@ class AnnotatorInterface:
 
         self.last_image = image
         persons = self.get_persons()
-        self._save_frame_data(persons)
+        if self.save_keypoints:
+            self._save_frame_data(self.get_persons())
 
         return persons
 
